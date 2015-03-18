@@ -21,5 +21,6 @@ public class person {
     @Produces("application/json")
     public Response getAll() {
         return Response.ok(Connect.getResults("SELECT * FROM project")).build();
+        
     }
 }

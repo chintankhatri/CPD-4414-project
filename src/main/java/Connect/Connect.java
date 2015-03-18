@@ -24,10 +24,10 @@ public class Connect {
         } catch (ClassNotFoundException ex) {
             //  Connection.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String hostname = System.getenv("127.13.153.130");
-        String portnum = System.getenv("3306");
-        String user = System.getenv("adminT5yrrEn");
-        String pass = System.getenv("zTJQJ2DKxR_G");
+        String hostname = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+        String portnum = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+        String user = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+        String pass = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
         String jdbc = "jdbc:mysql://" + hostname + ":" + portnum + "/jbosswildfly";
         return DriverManager.getConnection(jdbc, user, pass);
     }
