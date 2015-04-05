@@ -32,28 +32,6 @@ public class Connect {
         return DriverManager.getConnection(jdbc, user, pass);
     }
 
-    public static JsonArray getResults(String sql, String... params) {
-        JsonArray json = null;
-        try {
-            JsonArrayBuilder array = Json.createArrayBuilder();
-            Connection conn = getConnection();
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            for (int i = 0; i < params.length; i++) {
-                pstmt.setString(i + 1, params[i]);
-            }
-            ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
-                array.add(Json.createObjectBuilder()
-                        .add("p_id", rs.getInt("p_id"))
-                        .add("p_name", rs.getString("p_name"))
-                );
-            }
-            conn.close();
-            json = array.build();
-        } catch (SQLException ex) {
-            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return json;
-    }
+   
 
 }
