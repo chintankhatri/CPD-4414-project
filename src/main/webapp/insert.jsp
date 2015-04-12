@@ -10,13 +10,31 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+                <script src="http://code.jquery.com/jquery.min.js"></script>
+     
+        <script>
+            $(document).ready(function() {
+                $('#register').click(function() {
+                    $.ajax({
+                        url: "./f/form",
+                        dataType: "json",
+                        contentType: 'application/json; charset=UTF-8',
+                        data: JSON.stringify({"cname": $("#cname").val(),
+                         
+                            method: "post"
+                         
+                    });
+                });                
+            });
+
+        </script>
     </head>
     <body>
-        <form method="get" action="person">
+        <form method="get" action="servlet/Person">
             <table border="0" cellpadding="0" cellspacing="0"  id="id-form">
                 <tr>
                     <th valign="top">Category name:</th>
-                    <td><input type="text" class="inp-form" name="name" /></td>
+                    <td><input type="text" class="inp-form" name="cname" /></td>
                     <td></td>
                 </tr>
       
