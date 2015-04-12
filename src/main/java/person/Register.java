@@ -28,18 +28,20 @@ import javax.ws.rs.PathParam;
 public class Register {
 
     @POST
-    public void post(String str) {
+    public String post(String str) {
         try {
             JsonObject json = Json.createReader(new StringReader(str)).readObject();
-            String cname = json.getString("cname");
+            String title = json.getString("cname");
 
-            Connection conn = Connect.Connect.getConnection();
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO project (p_name) VALUES (?,)");
+            Connection conn = getConnection();
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO student (s_fname) VALUES (?)");
+            pstmt.setString(1, title);
 
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
 
     }
 
@@ -65,5 +67,4 @@ public class Register {
 //        }
 //        return result;
 //    }
-
 }

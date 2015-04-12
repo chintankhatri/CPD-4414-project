@@ -14,7 +14,7 @@
      
         <script>
             $(document).ready(function() {
-                $('#register').click(function() {
+                $('#Register').click(function() {
                     $.ajax({
                         url: "./f/form",
                         dataType: "json",
@@ -30,7 +30,7 @@
         </script>
     </head>
     <body>
-        <form method="get" action="servlet/Person">
+        <form method="post" >
             <table border="0" cellpadding="0" cellspacing="0"  id="id-form">
                 <tr>
                     <th valign="top">Category name:</th>

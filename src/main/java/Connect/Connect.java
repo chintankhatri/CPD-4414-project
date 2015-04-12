@@ -29,6 +29,14 @@ public class Connect {
         String user = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
         String pass = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
         String jdbc = "jdbc:mysql://" + hostname + ":" + portnum + "/jbosswildfly";
+        
+//         String hostname = System.getenv("localhost");
+//        String portnum = System.getenv("3306");
+//        String user = System.getenv("root");
+//        String pass = System.getenv("");
+//        String jdbc = "jdbc:mysql://" + hostname + ":" + portnum + "/ai";
+        
+        
         return DriverManager.getConnection(jdbc, user, pass);
     }
 
