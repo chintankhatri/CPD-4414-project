@@ -34,7 +34,7 @@ public class Register {
             String title = json.getString("cname");
 
             Connection conn = getConnection();
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO student (s_fname) VALUES (?)");
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO project (p_name) VALUES (?)");
             pstmt.setString(1, title);
 
             pstmt.executeUpdate();
