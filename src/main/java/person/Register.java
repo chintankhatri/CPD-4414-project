@@ -28,21 +28,22 @@ import javax.ws.rs.PathParam;
 public class Register {
 
     @POST
-    public String post(String str) {
+    public void post(String str) {
         try {
             JsonObject json = Json.createReader(new StringReader(str)).readObject();
-            String title = json.getString("cname");
-
+            String fname = json.getString("b_name");
+            String lname = json.getString("b_phone");
+      
             Connection conn = getConnection();
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO project (p_name) VALUES (?)");
-            pstmt.setString(1, title);
-
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO buyer (b_name,b_phone) VALUES (?,?)");
+            pstmt.setString(1, fname);
+            pstmt.setString(2, lname);
+   
             pstmt.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-
+           Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        
     }
 
 //    @GET

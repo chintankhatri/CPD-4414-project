@@ -19,25 +19,19 @@ import javax.json.JsonArrayBuilder;
 public class Connect {
 
     public static Connection getConnection() throws SQLException {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException ex) {
-            //  Connection.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+             Connection conn = null;
+        try{
+        Class.forName("com.mysql.jdbc.Driver");
+        String jdbc = "jdbc:mysql://localhost/db";
+        String user = "root";
+        String pass = "";
+        conn = DriverManager.getConnection(jdbc, user, pass);
         }
-        String hostname = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-        String portnum = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-        String user = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-        String pass = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-        String jdbc = "jdbc:mysql://" + hostname + ":" + portnum + "/jbosswildfly";
+        catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return conn;
         
-//         String hostname = System.getenv("localhost");
-//        String portnum = System.getenv("3306");
-//        String user = System.getenv("root");
-//        String pass = System.getenv("");
-//        String jdbc = "jdbc:mysql://" + hostname + ":" + portnum + "/ai";
-        
-        
-        return DriverManager.getConnection(jdbc, user, pass);
     }
 
    

@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+                <script src="http://code.jquery.com/jquery.min.js"></script>
+     
+        <script>
+            $(document).ready(function() {
+                $('#register').click(function() {
+                    $.ajax({
+                        url: "./f/form",
+                         dataType: "json",
+                           contentType: 'application/json; charset=UTF-8',
+                        data: JSON.stringify({"b_name": $("#b_name").val(),
+                            "b_phone": $("#b_phone").val()}),
+                            method: "post"
+                         
+                    });
+                });                
+            });
+
+        </script>
+    </head>
+    <body>
+        <form  >
+            <table >
+                <tr>
+                    <th valign="top">Category name:</th>
+                    <td><input type="text" class="inp-form" id="b_name" /></td>
+                       <td><input type="text" class="inp-form" id="b_phone" /></td>
+                    <td></td>
+                </tr>
+      
+
+                <tr>
+                    <th>&nbsp;</th>
+                    <td valign="top">
+                        <input type="submit" value="submit" id="register" class="form-submit" />
+                 
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
